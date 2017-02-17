@@ -1,5 +1,3 @@
-
-
 [![OParl Wortmarke](https://raw.githubusercontent.com/OParl/brand/master/wortmarke/oparl-wortmarke-rgb-m.png)](https://oparl.org)
 
 [![Build Status](https://travis-ci.org/OParl/spec.svg)](https://travis-ci.org/OParl/spec)
@@ -19,7 +17,8 @@ OParl wird hauptsächlich auf GitHub entwickelt. Hilfe im Umgang mit GitHub find
 Durch den Befehl `make` kann aus den Quelldateien die Spezifikation erstellt werden. Dazu müssen pandoc und latex installiert sein.
 
 Die Dateien, aus denen die Spezifikation erstellt wird, sind auf mehrere Ordner aufgeteilt:
- - `src/`:  Enthält den gesamten Fließtext als [Markdown](https://help.github.com/articles/markdown-basics/)-Dateien.
+ - `de/`:  Enthält den gesamten Fließtext auf Deutsch als [Markdown](https://help.github.com/articles/markdown-basics/)-Dateien.
+ - `en/`:  Enthält den gesamten Fließtext auf Englisch als [Markdown](https://help.github.com/articles/markdown-basics/)-Dateien.
  - `schema/`: Enthält das Datenmodell, d.h. den Aufbau der von OParl genutzten json-Objekte, als json-Dateien in einem eigenen Format.
  - `examples/`: Die im Text eingebundenen Beispiele
  - `scripts/`: Enthält Skripte, die u.a. die json-Dateien in Markdown umwandeln und die Beispiele validieren

@@ -1,11 +1,12 @@
 # Variables
 VERSION=1.1-draft
 HUMAN_VERSION="1.1 Entwurf"
-BASENAME=OParl-$(VERSION)
+OPARL_LANG?=de
+BASENAME=OParl-$(VERSION)-$(OPARL_LANG)
 
 # Directories
-SRC_DIR=src
-IMG_DIR=src/images
+SRC_DIR=$(OPARL_LANG)
+IMG_DIR=$(OPARL_LANG)/images
 SHM_DIR=schema
 EXP_DIR=examples
 OUT_DIR=out
@@ -19,7 +20,7 @@ GRAPHVIZ_DOT=dot
 
 LATEX_ENGINE=xelatex
 LATEX_TEMPLATE=resources/template.tex
-SCHEMA_MD=$(SRC_DIR)/3-99-generiertes-schema.md
+SCHEMA_MD=$(SRC_DIR)/3-99-schema.md
 HTML5_CSS=resources/html5.css
 
 GS=gs -dQUIET -dSAFER -dBATCH -dNOPAUSE -sDisplayHandle=0 -sDEVICE=png16m \
@@ -66,17 +67,17 @@ common: $(OUT_DIR) $(SCHEMA_MD) $(GS_IMAGES) $(MAGICK_IMAGES) $(GRAPHVIZ_IMAGES)
 
 html: common
 	$(PANDOC) --to html5 --css $(HTML5_CSS) --section-divs --self-contained \
-	    -o $(OUT_DIR)/$(BASENAME).html resources/lizenz-als-bild.md $(SRC_DIR)/*.md
+	    -o $(OUT_DIR)/$(BASENAME).html $(OPARL_LANG)/images/lizenz-als-bild.md $(SRC_DIR)/*.md
 
 pdf: common
 	$(PANDOC) --latex-engine=$(LATEX_ENGINE) --template $(LATEX_TEMPLATE) \
 			-o $(OUT_DIR)/$(BASENAME).pdf $(SRC_DIR)/*.md
 
 odt: common
-	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).odt resources/lizenz-als-text.md $(SRC_DIR)/*.md
+	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).odt $(OPARL_LANG)/images/lizenz-als-text.md $(SRC_DIR)/*.md
 
 docx: common # FIXME: License information in header is missing
-	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).docx resources/lizenz-als-text.md $(SRC_DIR)/*.md
+	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).docx $(OPARL_LANG)/images/lizenz-als-text.md $(SRC_DIR)/*.md
 
 txt: common
 	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).txt $(SRC_DIR)/*.md
