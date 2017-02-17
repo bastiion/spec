@@ -25,6 +25,7 @@ Die Dateien, aus denen die Spezifikation erstellt wird, sind auf mehrere Ordner 
  - `examples/`: Die im Text eingebundenen Beispiele
  - `scripts/`: Skripte, die u.a. die json-Dateien in Markdown umwandeln und die Beispiele validieren
  - `out/`:  Die fertigen Dokumente 
+ - `assets/`, `de/assets` sowie `en/assets`: Verschiedene Dateien, die für die Spezifikation benötigt werden
 
 ## Die Spezifikation in verschiedenen Formaten
 
