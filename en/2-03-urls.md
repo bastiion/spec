@@ -1,6 +1,6 @@
 ## URLs {#urls}
 
-![Aufbau einer URL](en/images/url.png)
+![Aufbau einer URL](en/assets/url.png)
 
 Den URLs (für _Uniform Resource Locators_) kommt eine besondere Bedeutung zu
 und es werden deshalb eine Reihe von Anforderungen an deren Aufbau und

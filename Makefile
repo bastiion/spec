@@ -6,11 +6,12 @@ BASENAME=OParl-$(VERSION)-$(OPARL_LANG)
 
 # Directories
 SRC_DIR=$(OPARL_LANG)
-IMG_DIR=$(OPARL_LANG)/images
+IMG_DIR=$(OPARL_LANG)/assets
 SHM_DIR=schema
 EXP_DIR=examples
 OUT_DIR=out
 ARC_DIR=archives
+ASS_DIR=assets
 
 # Command config and macros
 PANDOC=pandoc --from markdown --standalone --table-of-contents --toc-depth=2 \
@@ -19,9 +20,9 @@ PANDOC=pandoc --from markdown --standalone --table-of-contents --toc-depth=2 \
 GRAPHVIZ_DOT=dot
 
 LATEX_ENGINE=xelatex
-LATEX_TEMPLATE=resources/template.tex
+LATEX_TEMPLATE=$(ASS_DIR)/template.tex
 SCHEMA_MD=$(SRC_DIR)/3-99-schema.md
-HTML5_CSS=resources/html5.css
+HTML5_CSS=$(ASS_DIR)/html5.css
 
 GS=gs -dQUIET -dSAFER -dBATCH -dNOPAUSE -sDisplayHandle=0 -sDEVICE=png16m \
 			-r600 -dTextAlphaBits=4
@@ -67,17 +68,17 @@ common: $(OUT_DIR) $(SCHEMA_MD) $(GS_IMAGES) $(MAGICK_IMAGES) $(GRAPHVIZ_IMAGES)
 
 html: common
 	$(PANDOC) --to html5 --css $(HTML5_CSS) --section-divs --self-contained \
-	    -o $(OUT_DIR)/$(BASENAME).html $(OPARL_LANG)/images/lizenz-als-bild.md $(SRC_DIR)/*.md
+	    -o $(OUT_DIR)/$(BASENAME).html $(IMG_DIR)/lizenz-als-bild.md $(SRC_DIR)/*.md
 
 pdf: common
 	$(PANDOC) --latex-engine=$(LATEX_ENGINE) --template $(LATEX_TEMPLATE) \
 			-o $(OUT_DIR)/$(BASENAME).pdf $(SRC_DIR)/*.md
 
 odt: common
-	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).odt $(OPARL_LANG)/images/lizenz-als-text.md $(SRC_DIR)/*.md
+	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).odt $(IMG_DIR)/lizenz-als-text.md $(SRC_DIR)/*.md
 
 docx: common # FIXME: License information in header is missing
-	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).docx $(OPARL_LANG)/images/lizenz-als-text.md $(SRC_DIR)/*.md
+	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).docx $(IMG_DIR)/lizenz-als-text.md $(SRC_DIR)/*.md
 
 txt: common
 	$(PANDOC) -o $(OUT_DIR)/$(BASENAME).txt $(SRC_DIR)/*.md
