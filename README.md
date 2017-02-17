@@ -14,15 +14,17 @@ maschienlesbaren Informationen aus Ratsinformationssystemen. Mehr über OParl:
 
 OParl wird hauptsächlich auf GitHub entwickelt. Hilfe im Umgang mit GitHub findest du [hier](https://help.github.com/). Änderungsvorschläge können über Pull Requests eingebracht werden.
 
-Durch den Befehl `make` kann aus den Quelldateien die Spezifikation erstellt werden. Dazu müssen pandoc und latex installiert sein.
+Durch den Befehl `./build.sh` kann aus den Quelldateien die Spezifikation erstellt werden. Dazu müssen pandoc und latex installiert sein.
+Soll nur eine Variante erstellt werden, so kann man z.B. mit `./build.sh en` nur die englische Version ertsellt werden
+oder mit `./build.sh de pdf` nur die deutsche pdf-Version.
 
 Die Dateien, aus denen die Spezifikation erstellt wird, sind auf mehrere Ordner aufgeteilt:
- - `de/`:  Enthält den gesamten Fließtext auf Deutsch als [Markdown](https://help.github.com/articles/markdown-basics/)-Dateien.
- - `en/`:  Enthält den gesamten Fließtext auf Englisch als [Markdown](https://help.github.com/articles/markdown-basics/)-Dateien.
- - `schema/`: Enthält das Datenmodell, d.h. den Aufbau der von OParl genutzten json-Objekte, als json-Dateien in einem eigenen Format.
+ - `de/`:  Der Fließtext auf Deutsch als [Markdown](https://help.github.com/articles/markdown-basics/)-Dateien.
+ - `en/`:  Der Fließtext auf Englisch als [Markdown](https://help.github.com/articles/markdown-basics/)-Dateien.
+ - `schema/`: Das Datenmodell, d.h. den Aufbau der von OParl genutzten json-Objekte, als json-Dateien in einem eigenen Format.
  - `examples/`: Die im Text eingebundenen Beispiele
- - `scripts/`: Enthält Skripte, die u.a. die json-Dateien in Markdown umwandeln und die Beispiele validieren
- - `out/`:  Die von `make` erstellten Dokumente 
+ - `scripts/`: Skripte, die u.a. die json-Dateien in Markdown umwandeln und die Beispiele validieren
+ - `out/`:  Die fertigen Dokumente 
 
 ## Die Spezifikation in verschiedenen Formaten
 
