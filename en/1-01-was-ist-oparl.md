@@ -1,4 +1,4 @@
-## Was ist OParl? {#was_ist_oparl}
+## What is OParl? {#was_ist_oparl}
 
 OParl ist die Gruppierung, die Initiator und Herausgeber der vorliegenden Spezifikation ist. An OParl wirken Verbände, zivilgesellschaftliche Organisationen und Initiativen und Softwareanbieter sowie interessierte Einzelpersonen mit.
 
