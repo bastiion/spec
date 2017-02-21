@@ -1,8 +1,8 @@
 out/
 archives/
 
-de/images/*.png
-en/images/*.png
+de/assets/*.png
+en/assets/*.png
 de/3-99-schema.md
 en/3-99-schema.md
 

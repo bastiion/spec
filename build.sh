@@ -26,7 +26,7 @@ case ${subcommand} in
         make OPARL_LANG=de $2
         ;;
     "en")
-        make OPARL_LANG=de $2
+        make OPARL_LANG=en $2
         ;;
     *)
         make $1
