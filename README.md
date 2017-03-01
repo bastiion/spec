@@ -12,7 +12,8 @@ maschienlesbaren Informationen aus Ratsinformationssystemen. Mehr über OParl:
 
 ## Änderungen an OParl vornehmen
 
-OParl wird hauptsächlich auf GitHub entwickelt. Hilfe im Umgang mit GitHub findest du [hier](https://help.github.com/). Änderungsvorschläge können über Pull Requests eingebracht werden.
+OParl wird hauptsächlich auf GitHub entwickelt. Hilfe im Umgang mit GitHub findest du [hier](https://help.github.com/).
+Änderungsvorschläge können über Pull Requests eingebracht werden.
 
 Durch den Befehl `./build.sh` kann aus den Quelldateien die Spezifikation erstellt werden. Dazu müssen pandoc und latex installiert sein.
 Soll nur eine Variante erstellt werden, so kann man z.B. mit `./build.sh en` nur die englische Version ertsellt werden

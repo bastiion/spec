@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-# -*- encoding: utf-8 -*-
 
+import argparse
+import collections
+import glob
 import json
 import os
-import sys
-import glob
-import collections
-import argparse
+
+from localize_schema import localize_schema
 
 parser = argparse.ArgumentParser()
 parser.add_argument("schema_folder")
 parser.add_argument("examples_folder")
 parser.add_argument("output_file")
+parser.add_argument("translations_file")
 args = parser.parse_args()
+
 
 class OParl:
     # Default properties don't need a description
@@ -47,20 +49,20 @@ def type_to_string(prop):
     Converts the json descriptions of the type of any attribute into a human-
     readable string printed in spec
     """
-    type = prop["type"]
+    oparl_type = prop["type"]
 
     # switch over all types
-    if type == "object":
+    if oparl_type == "object":
         # Check for embedded objects
         if "schema" in prop:
-            type = type + " (" + prop["schema"][0:-5] + ")"
-    elif type == "string":
+            oparl_type = oparl_type + " (" + prop["schema"][0:-5] + ")"
+    elif oparl_type == "string":
         if "format" in prop:
             if "references" in prop:
-                type = prop["format"] + " (" + prop["references"] + ")"
+                oparl_type = prop["format"] + " (" + prop["references"] + ")"
             else:
-                type = prop["format"]
-    elif type == "array":
+                oparl_type = prop["format"]
+    elif oparl_type == "array":
         items = prop["items"]
         subtype = items["type"]
 
@@ -77,22 +79,23 @@ def type_to_string(prop):
                     subtype = items["format"] + " (" + prop["references"] + ")"
                 else:
                     subtype = items["format"]
-        elif type == "boolean":
+        elif oparl_type == "boolean":
             pass
-        elif type == "integer":
+        elif oparl_type == "integer":
             pass
         else:
-            raise Exception("Invalid type: " + type)
+            raise Exception("Invalid type: " + oparl_type)
 
-        type = type + " of " + subtype
-    elif type == "boolean":
+        oparl_type = oparl_type + " of " + subtype
+    elif oparl_type == "boolean":
         pass
-    elif type == "integer":
+    elif oparl_type == "integer":
         pass
     else:
-        raise Exception("Invalid type: " + type)
+        raise Exception("Invalid type: " + oparl_type)
 
-    return type
+    return oparl_type
+
 
 def schema_to_md_table(schema):
     # Formatting
@@ -107,15 +110,15 @@ def schema_to_md_table(schema):
     md += schema["description"] + "\n\n"
 
     # Table Header
-    md += "-"*(propspace + typespace + descspace) + "\n"
+    md += "-" * (propspace + typespace + descspace) + "\n"
     md += "Name" + " " * (propspace - len("Name"))
     md += "Typ" + " " * (typespace - len("Typ"))
     md += "Beschreibung" + " " * (descspace - len("Beschreibung")) + "\n"
-    md += "-" * (propspace - 1) + " " + "-" * (typespace - 1) + " " + "-" * (descspace) + "\n"
+    md += "-" * (propspace - 1) + " " + "-" * (typespace - 1) + " " + "-" * descspace + "\n"
 
     # A row for each attribute
     for prop_name, prop in schema["properties"].items():
-        type = type_to_string(prop)
+        oparl_type = type_to_string(prop)
 
         if "description" in prop.keys():
             description = prop["description"]
@@ -128,7 +131,8 @@ def schema_to_md_table(schema):
             description = "**ZWINGEND** " + description
 
         # The actual table row
-        md += "`"+ prop_name + "`" + " " * (propspace - len(prop_name)) + type + " " * (typespace - len(type)) + description + "\n\n"
+        md += "`" + prop_name + "`" + " " * (propspace - len(prop_name)) + oparl_type + " " * (
+            typespace - len(oparl_type)) + description + "\n\n"
 
     # End of Table
     md += "-" * (propspace + typespace + descspace) + "\n\n"
@@ -156,20 +160,24 @@ def json_examples_to_md(name):
 
     return md
 
+
 def main():
     generated_schema = ""
 
     # Avoid missing objects
-    assert(len(OParl.objects) == len(os.listdir(args.schema_folder)))
+    assert (len(OParl.objects) == len(os.listdir(args.schema_folder)))
 
     for obj in OParl.objects:
         filepath = os.path.join(args.schema_folder, obj + ".json")
         print("Processing " + filepath)
-        schema = schema_to_md_table(json.load(open(filepath, encoding='utf-8'), object_pairs_hook=collections.OrderedDict))
+        with open(filepath, encoding='utf-8') as schema_file:
+            localize_json = localize_schema(args.translations_file, schema_file)
+        schema = schema_to_md_table(localize_json)
         generated_schema += schema
 
     with open(args.output_file, "w", encoding='utf-8') as out:
         out.write(generated_schema)
+
 
 if __name__ == "__main__":
     main()
