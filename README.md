@@ -1,6 +1,7 @@
 [![OParl Wortmarke](https://raw.githubusercontent.com/OParl/brand/master/wortmarke/oparl-wortmarke-rgb-m.png)](https://oparl.org)
 
 [![Build Status](https://travis-ci.org/OParl/spec.svg)](https://travis-ci.org/OParl/spec)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/oparl/localized.svg)](https://crowdin.com/project/oparl)
 
 In diesem Repository wird die Spezifikation zum [OParl](https://oparl.org/)-Standard erarbeitet.
 
