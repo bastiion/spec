@@ -1,5 +1,5 @@
 files:
   - source: '/de/[123]*.md'
     translation: /%two_letters_code%/%original_file_name%
-  - source: /de/schema.yml
+  - source: /de/schema.txt
     translation: /%two_letters_code%/%original_file_name%
