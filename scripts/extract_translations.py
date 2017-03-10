@@ -24,7 +24,7 @@ def main():
     parser.add_argument("--lang", default="de")
     args = parser.parse_args()
 
-    with open(os.path.join(args.lang, "schema.yml"), 'w') as mappings_file:
+    with open(os.path.join(args.lang, "schema.txt"), 'w') as mappings_file:
         for i in os.listdir("schema"):
             with open(os.path.join("schema", i)) as f:
                 schema = json.load(f, object_pairs_hook=collections.OrderedDict)
