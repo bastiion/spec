@@ -8,13 +8,6 @@ import os
 
 from localize_schema import localize_schema
 
-parser = argparse.ArgumentParser()
-parser.add_argument("schema_folder")
-parser.add_argument("examples_folder")
-parser.add_argument("output_file")
-parser.add_argument("translations_file")
-args = parser.parse_args()
-
 
 class OParl:
     # Default properties don't need a description
@@ -97,7 +90,7 @@ def type_to_string(prop):
     return oparl_type
 
 
-def schema_to_md_table(schema):
+def schema_to_md_table(schema, examples_folder):
     # Formatting
     propspace = 30
     typespace = 45
@@ -137,13 +130,13 @@ def schema_to_md_table(schema):
     # End of Table
     md += "-" * (propspace + typespace + descspace) + "\n\n"
 
-    md += json_examples_to_md(schema["title"])
+    md += json_examples_to_md(examples_folder, schema["title"])
     return md
 
 
-def json_examples_to_md(name):
+def json_examples_to_md(examples_folder, name):
     md = ""
-    filepath = os.path.join(args.examples_folder, name)
+    filepath = os.path.join(examples_folder, name)
     examples = glob.glob(filepath + "-[0-9][0-9].json")
     for nr, examplepath in enumerate(examples):
         if len(examples) == 1:
@@ -161,23 +154,33 @@ def json_examples_to_md(name):
     return md
 
 
-def main():
+def generate_schema(schema_folder, translations_file, output_file, examples_folder):
     generated_schema = ""
 
     # Avoid missing objects
-    assert (len(OParl.objects) == len(os.listdir(args.schema_folder)))
+    assert (len(OParl.objects) == len(os.listdir(schema_folder)))
 
     for obj in OParl.objects:
-        filepath = os.path.join(args.schema_folder, obj + ".json")
+        filepath = os.path.join(schema_folder, obj + ".json")
         print("Processing " + filepath)
         with open(filepath, encoding='utf-8') as schema_file:
-            localize_json = localize_schema(args.translations_file, schema_file)
-        schema = schema_to_md_table(localize_json)
+            localize_json = localize_schema(translations_file, schema_file)
+        schema = schema_to_md_table(localize_json, examples_folder)
         generated_schema += schema
 
-    with open(args.output_file, "w", encoding='utf-8') as out:
+    with open(output_file, "w", encoding='utf-8') as out:
         out.write(generated_schema)
 
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("schema_folder")
+    parser.add_argument("examples_folder")
+    parser.add_argument("output_file")
+    parser.add_argument("translations_file")
+    args = parser.parse_args()
+
+    generate_schema(args.schema_folder, args.translations_file, args.output_file, args.examples_folder)
 
 if __name__ == "__main__":
     main()

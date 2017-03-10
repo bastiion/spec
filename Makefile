@@ -6,7 +6,7 @@ BASENAME=OParl-$(VERSION)-$(OPARL_LANG)
 
 # Directories
 SRC_DIR=$(OPARL_LANG)
-IMG_DIR=$(OPARL_LANG)/assets
+LOCALIZED_ASSETS=$(OPARL_LANG)/assets
 SHM_DIR=schema
 EXP_DIR=examples
 OUT_DIR=out
@@ -38,13 +38,13 @@ LATEX_TEMPLATE=$(ASS_DIR)/template.tex
 HTML5_CSS=$(ASS_DIR)/html5.css
 SCHEMA_MD=$(SRC_DIR)/3-99-schema.md
 
-PDF_IMAGES=$(wildcard $(IMG_DIR)/*.pdf)
+PDF_IMAGES=$(wildcard $(LOCALIZED_ASSETS)/*.pdf)
 GS_IMAGES=$(PDF_IMAGES:.pdf=.png)
 
-SVG_IMAGES=$(wildcard $(IMG_DIR)/*.svg)
+SVG_IMAGES=$(wildcard $(LOCALIZED_ASSETS)/*.svg)
 MAGICK_IMAGES=$(SVG_IMAGES:.svg=.png)
 
-DOT_IMAGES=$(wildcard $(IMG_DIR)/*.dot)
+DOT_IMAGES=$(wildcard $(LOCALIZED_ASSETS)/*.dot)
 GRAPHVIZ_IMAGES=$(DOT_IMAGES:.dot=.png)
 
 SCHEMA_JSON=$(wildcard $(SHM_DIR)/*.json)
@@ -57,13 +57,13 @@ all: html pdf odt docx txt epub
 # preliminary targets
 
 # transform dot file using dot -Tpng graphviz.dot -o graphviz.png
-$(IMG_DIR)/%.png: $(IMG_DIR)/%.dot
+$(LOCALIZED_ASSETS)/%.png: $(LOCALIZED_ASSETS)/%.dot
 	$(DOT) -Tpng $< -o $@
 
-$(IMG_DIR)/%.png: $(IMG_DIR)/%.pdf
+$(LOCALIZED_ASSETS)/%.png: $(LOCALIZED_ASSETS)/%.pdf
 	$(GS) $(GS_FLAGS) -sOutputFile=$@ -f $<
 
-$(IMG_DIR)/%.png: $(IMG_DIR)/%.svg
+$(LOCALIZED_ASSETS)/%.png: $(LOCALIZED_ASSETS)/%.svg
 	$(CONVERT) $< $@
 
 $(OUT_DIR):
@@ -78,17 +78,17 @@ common: $(OUT_DIR) $(SCHEMA_MD) $(GS_IMAGES) $(MAGICK_IMAGES) $(GRAPHVIZ_IMAGES)
 
 html: common
 	$(PANDOC) $(PANDOC_FLAGS) --to html5 --css $(HTML5_CSS) --section-divs --self-contained \
-	    -o $(OUT_DIR)/$(BASENAME).html $(IMG_DIR)/lizenz-als-bild.md $(SRC_DIR)/*.md
+	    -o $(OUT_DIR)/$(BASENAME).html $(LOCALIZED_ASSETS)/lizenz-als-bild.md $(SRC_DIR)/*.md
 
 pdf: common
 	$(PANDOC) $(PANDOC_FLAGS) --latex-engine=$(LATEX) --template $(LATEX_TEMPLATE) \
 			-o $(OUT_DIR)/$(BASENAME).pdf $(SRC_DIR)/*.md
 
 odt: common
-	$(PANDOC) $(PANDOC_FLAGS) -o $(OUT_DIR)/$(BASENAME).odt resources/lizenz-als-text.md $(SRC_DIR)/*.md
+	$(PANDOC) $(PANDOC_FLAGS) -o $(OUT_DIR)/$(BASENAME).odt $(LOCALIZED_ASSETS)/lizenz-als-text.md $(SRC_DIR)/*.md
 
 docx: common # FIXME: License information in header is missing
-	$(PANDOC) $(PANDOC_FLAGS) -o $(OUT_DIR)/$(BASENAME).docx resources/lizenz-als-text.md $(SRC_DIR)/*.md
+	$(PANDOC) $(PANDOC_FLAGS) -o $(OUT_DIR)/$(BASENAME).docx $(LOCALIZED_ASSETS)/lizenz-als-text.md $(SRC_DIR)/*.md
 
 txt: common
 	$(PANDOC) $(PANDOC_FLAGS) -o $(OUT_DIR)/$(BASENAME).txt $(SRC_DIR)/*.md

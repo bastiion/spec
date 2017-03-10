@@ -6,6 +6,10 @@ import json
 
 
 def localize_schema(translations_file, schema_file):
+    """
+    Replaces the handlebars/django style templates in the schema files with the translations stored in
+    `translations_file`. The keys used the templates resemble JSONPath
+    """
     schema = schema_file.read()
 
     with open(translations_file) as f:
@@ -28,4 +32,3 @@ if __name__ == "__main__":
     with open("schema/{}.json".format(args.schema_name)) as schema_name:
         localized = localize_schema(args.translations_file, schema_name)
     print(json.dumps(localized, indent=4, ensure_ascii=False))
-
