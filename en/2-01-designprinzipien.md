@@ -1,10 +1,10 @@
-## Designprinzipien {#designprinzipien}
+## Design Principles {#designprinzipien}
 
-### Aufbauen auf gängiger Praxis {#aufbauen-auf-gaengiger-praxis}
+### Building on established practices {#aufbauen-auf-gaengiger-praxis}
 
-Grundlage für die Erarbeitung der OParl-Spezifikation in der vorliegenden Version ist eine Analyse von aktuell (2012 bis 2016) in Deutschland etablierten parlamentarischen Informationssystemen und ihrer Nutzung. Erklärtes Ziel für diese erste Version ist es, mit möglichst geringem Entwicklungsaufwand auf Seite der Softwareanbieter und ebenso geringem Migrationsaufwand auf Seite der Betreiber zu einer Bereitstellung von parlamentarischen Informationen über eine OParl-API zu gelangen. Hierbei war es von entscheidender Bedeutung, dass sich die Informationsmodelle der einschlägigen Softwareprodukte stark ähneln. Für die OParl-Spezifikation wurde sozusagen ein Datenmodell als "gemeinsamer Nenner" auf Basis der gängigen Praxis konstruiert.
+Basis for the development of the OParl specification in the present version is an analysis of currently (2012-2016) established parliamentary information systems in Germany and their use. Goal for this first version is to get an OParl API with minimum effort for the software provider and also little migration effort for the operator to a deployment of parliamentary information through an OParl API. It was crucial that the information models of relevant software products are very similar. So to speak, a data model as the "common denominator" on the basis of current practice has been created for the OParl specification.
 
-### Verbesserung gegenüber dem Status Quo wo möglich {#verbesserung-gegenueber-status-quo}
+### Improvement over the Status Quo where possible {#verbesserung-gegenueber-status-quo}
 
 Dort, wo es dem Ziel der einfachen Implementierbarkeit und der einfachen Migration nicht im Weg steht, erlauben sich die Autoren dieser Spezifikation, auch Funktionen aufzunehmen, die noch nicht als gängige Praxis im Bereich der Ratsinformationssysteme bezeichnet werden können oder welche nur von einzelnen Systemen unterstützt werden. Solche Funktionen sind dann so integriert, dass sie nicht als zwingende Anforderung gelten.
 
