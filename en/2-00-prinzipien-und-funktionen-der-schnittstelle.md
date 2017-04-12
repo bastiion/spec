@@ -1,1 +1,1 @@
-# Prinzipien und Funktionen der Schnittstelle {#prinzipien-und-funktionen-der-schnittstelle}
+# Principles and features of the interface {#prinzipien-und-funktionen-der-schnittstelle}
