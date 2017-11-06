@@ -1,0 +1,229 @@
+@prefix : <https://oparl.org/schema/1.0/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix oparl: <https://www.oparl.org/ontology> .
+@base <https://oparl.org/schema/1.0/> .
+
+<https://oparl.org/schema/1.0/> rdf:type owl:Ontology ;
+                                
+                                owl:versionIRI <https://oparl.org/schema/1.0/> ;
+                                
+                                rdfs:label "oparl.org ontology"@en ;
+                                
+                                rdfs:comment "Ontology of the oparl ontology for german parliament data"@en ,
+                                             "Spezifikation für eine offene Schnittstelle für Ratsinformationssysteme"@de .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://oparl.org/schema/1.0/hasAttachement
+
+:hasAttachement rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "has attachement"@en ,
+                           "hat Anhang"@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/invited
+
+:1.0/invited rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "a person can be invited by an Invitation File" ;
+             
+             rdfs:label "invitated by" .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://oparl.org/schema/1.0/id
+
+:id rdf:type owl:DatatypeProperty ;
+    
+    rdfs:label "identified by" .
+
+
+
+###  https://oparl.org/schema/1.0/paperType
+
+:paperType rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "Art der Drucksache"@de ,
+                      "paper type"@en .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://oparl.org/schema/1.0/1.0/Advisory
+
+:1.0/Advisory rdf:type owl:Class ;
+              
+              rdfs:subClassOf :1.0/Organization ;
+              
+              rdfs:label "Beirat"@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/AgendaItem
+
+:1.0/AgendaItem rdf:type owl:Class ;
+                
+                rdfs:label "Tagesordnungspunkt"@de ,
+                           "agenda item"@en .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Body
+
+:1.0/Body rdf:type owl:Class ;
+          
+          rdfs:comment "Repräsentiert eine Körperschaft. Eine Körperschaft ist in den meisten Fällen eine Gemeinde, eine Stadt oder ein Landkreis."@de ;
+          
+          rdfs:label "Körperschaft"@de ,
+                     "body"@en .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Consultation
+
+:1.0/Consultation rdf:type owl:Class ;
+                  
+                  rdfs:comment "Beratung über Drucksachen in einer Sitzung."@de ;
+                  
+                  rdfs:label "Beratung"@de ,
+                             "Consultation"@en .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/File
+
+:1.0/File rdf:type owl:Class ;
+          
+          rdfs:comment "Ein Objekt vom Typ oparl:File repräsentiert eine Datei, beispielsweise eine PDF-Datei, ein RTF- oder ODF-Dokument, und hält Metadaten zu der Datei sowie URLs zum Zugriff auf die Datei bereit." ;
+          
+          rdfs:label "Datei"@de ,
+                     "File" .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Fraction
+
+:1.0/Fraction rdf:type owl:Class ;
+              
+              rdfs:subClassOf :1.0/Organization ;
+              
+              rdfs:label "Fraktion"@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/LegislativeTerm
+
+:1.0/LegislativeTerm rdf:type owl:Class ;
+                     
+                     rdfs:comment "Beschreibung einer Wahlperiode."@de ;
+                     
+                     rdfs:label "Legislaturperiode"@de ,
+                                "legislative period" .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Location
+
+:1.0/Location rdf:type owl:Class .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Meeting
+
+:1.0/Meeting rdf:type owl:Class .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Membership
+
+:1.0/Membership rdf:type owl:Class ;
+                
+                rdfs:comment "Mitgliedschaft von Personen in Gruppierungen. Diese Mitgliedschaften können zeitlich begrenzt sein."@de ;
+                
+                rdfs:label "Membership"@en ,
+                           "Mitgliedschaft"@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Organization
+
+:1.0/Organization rdf:type owl:Class ;
+                  
+                  rdfs:comment "Bildet Gruppierungen von Personen ab, die in der parlamentarischen Arbeit eine Rolle spielen. Dazu zählen in der Praxis insbesondere Fraktionen und Gremien."@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Paper
+
+:1.0/Paper rdf:type owl:Class ;
+           
+           rdfs:comment "Drucksachen in der parlamentarischen Arbeit, wie zum Beispiel Anfragen, Anträgen und Beschlussvorlagen." ;
+           
+           rdfs:label "Drucksache"@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Parliament
+
+:1.0/Parliament rdf:type owl:Class ;
+                
+                rdfs:subClassOf :1.0/Organization ;
+                
+                rdfs:label "Parlament"@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Party
+
+:1.0/Party rdf:type owl:Class ;
+           
+           rdfs:subClassOf :1.0/Organization ;
+           
+           rdfs:label "Partei"@de .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/Person
+
+:1.0/Person rdf:type owl:Class .
+
+
+
+###  https://oparl.org/schema/1.0/1.0/System
+
+:1.0/System rdf:type owl:Class .
+
+
+
+
+###  Generated by the OWL API (version 4.2.1.20160306-0033) https://github.com/owlcs/owlapi
+
