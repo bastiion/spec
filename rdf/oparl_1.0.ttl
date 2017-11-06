@@ -33,9 +33,9 @@
 
 
 
-###  https://oparl.org/schema/1.0/1.0/invited
+###  https://oparl.org/schema/1.0/invited
 
-:1.0/invited rdf:type owl:ObjectProperty ;
+:invited rdf:type owl:ObjectProperty ;
              
              rdfs:comment "a person can be invited by an Invitation File" ;
              
@@ -78,28 +78,28 @@
 #################################################################
 
 
-###  https://oparl.org/schema/1.0/1.0/Advisory
+###  https://oparl.org/schema/1.0/Advisory
 
-:1.0/Advisory rdf:type owl:Class ;
+:Advisory rdf:type owl:Class ;
               
-              rdfs:subClassOf :1.0/Organization ;
+              rdfs:subClassOf :Organization ;
               
               rdfs:label "Beirat"@de .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/AgendaItem
+###  https://oparl.org/schema/1.0/AgendaItem
 
-:1.0/AgendaItem rdf:type owl:Class ;
+:AgendaItem rdf:type owl:Class ;
                 
                 rdfs:label "Tagesordnungspunkt"@de ,
                            "agenda item"@en .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Body
+###  https://oparl.org/schema/1.0/Body
 
-:1.0/Body rdf:type owl:Class ;
+:Body rdf:type owl:Class ;
           
           rdfs:comment "Repräsentiert eine Körperschaft. Eine Körperschaft ist in den meisten Fällen eine Gemeinde, eine Stadt oder ein Landkreis."@de ;
           
@@ -108,9 +108,9 @@
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Consultation
+###  https://oparl.org/schema/1.0/Consultation
 
-:1.0/Consultation rdf:type owl:Class ;
+:Consultation rdf:type owl:Class ;
                   
                   rdfs:comment "Beratung über Drucksachen in einer Sitzung."@de ;
                   
@@ -119,9 +119,9 @@
 
 
 
-###  https://oparl.org/schema/1.0/1.0/File
+###  https://oparl.org/schema/1.0/File
 
-:1.0/File rdf:type owl:Class ;
+:File rdf:type owl:Class ;
           
           rdfs:comment "Ein Objekt vom Typ oparl:File repräsentiert eine Datei, beispielsweise eine PDF-Datei, ein RTF- oder ODF-Dokument, und hält Metadaten zu der Datei sowie URLs zum Zugriff auf die Datei bereit." ;
           
@@ -130,19 +130,19 @@
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Fraction
+###  https://oparl.org/schema/1.0/Fraction
 
-:1.0/Fraction rdf:type owl:Class ;
+:Fraction rdf:type owl:Class ;
               
-              rdfs:subClassOf :1.0/Organization ;
+              rdfs:subClassOf :Organization ;
               
               rdfs:label "Fraktion"@de .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/LegislativeTerm
+###  https://oparl.org/schema/1.0/LegislativeTerm
 
-:1.0/LegislativeTerm rdf:type owl:Class ;
+:LegislativeTerm rdf:type owl:Class ;
                      
                      rdfs:comment "Beschreibung einer Wahlperiode."@de ;
                      
@@ -151,21 +151,21 @@
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Location
+###  https://oparl.org/schema/1.0/Location
 
-:1.0/Location rdf:type owl:Class .
-
-
-
-###  https://oparl.org/schema/1.0/1.0/Meeting
-
-:1.0/Meeting rdf:type owl:Class .
+:Location rdf:type owl:Class .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Membership
+###  https://oparl.org/schema/1.0/Meeting
 
-:1.0/Membership rdf:type owl:Class ;
+:Meeting rdf:type owl:Class .
+
+
+
+###  https://oparl.org/schema/1.0/Membership
+
+:Membership rdf:type owl:Class ;
                 
                 rdfs:comment "Mitgliedschaft von Personen in Gruppierungen. Diese Mitgliedschaften können zeitlich begrenzt sein."@de ;
                 
@@ -174,17 +174,17 @@
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Organization
+###  https://oparl.org/schema/1.0/Organization
 
-:1.0/Organization rdf:type owl:Class ;
+:Organization rdf:type owl:Class ;
                   
                   rdfs:comment "Bildet Gruppierungen von Personen ab, die in der parlamentarischen Arbeit eine Rolle spielen. Dazu zählen in der Praxis insbesondere Fraktionen und Gremien."@de .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Paper
+###  https://oparl.org/schema/1.0/Paper
 
-:1.0/Paper rdf:type owl:Class ;
+:Paper rdf:type owl:Class ;
            
            rdfs:comment "Drucksachen in der parlamentarischen Arbeit, wie zum Beispiel Anfragen, Anträgen und Beschlussvorlagen." ;
            
@@ -192,35 +192,35 @@
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Parliament
+###  https://oparl.org/schema/1.0/Parliament
 
-:1.0/Parliament rdf:type owl:Class ;
+:Parliament rdf:type owl:Class ;
                 
-                rdfs:subClassOf :1.0/Organization ;
+                rdfs:subClassOf :Organization ;
                 
                 rdfs:label "Parlament"@de .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Party
+###  https://oparl.org/schema/1.0/Party
 
-:1.0/Party rdf:type owl:Class ;
+:Party rdf:type owl:Class ;
            
-           rdfs:subClassOf :1.0/Organization ;
+           rdfs:subClassOf :Organization ;
            
            rdfs:label "Partei"@de .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/Person
+###  https://oparl.org/schema/1.0/Person
 
-:1.0/Person rdf:type owl:Class .
+:Person rdf:type owl:Class .
 
 
 
-###  https://oparl.org/schema/1.0/1.0/System
+###  https://oparl.org/schema/1.0/System
 
-:1.0/System rdf:type owl:Class .
+:System rdf:type owl:Class .
 
 
 
