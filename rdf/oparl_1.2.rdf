@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://schema.oparl.org/ontology#"
+     xml:base="https://schema.oparl.org/ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:oparl="https://www.oparl.org/ontology">
+    <owl:Ontology rdf:about="https://schema.oparl.org/ontology">
+        <owl:versionIRI rdf:resource="https://schema.oparl.org/1.1"/>
+        <rdfs:label xml:lang="en">oparl.org ontology</rdfs:label>
+        <rdfs:comment xml:lang="en">Ontology of the oparl ontology for german parliament data</rdfs:comment>
+        <rdfs:comment xml:lang="de">Spezifikation für eine offene Schnittstelle für Ratsinformationssysteme</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://oparl.org/schema/1.0/invited -->
+
+    <owl:ObjectProperty rdf:about="https://oparl.org/schema/1.0/invited">
+        <rdfs:comment>a person can be invited by an Invitation File</rdfs:comment>
+        <rdfs:label>invitated by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Advisory -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Advisory">
+        <rdfs:subClassOf rdf:resource="https://oparl.org/schema/1.0/Organization"/>
+        <rdfs:label xml:lang="de">Beirat</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/AgendaItem -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/AgendaItem"/>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Body -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Body">
+        <rdfs:comment xml:lang="de">Repräsentiert eine Körperschaft. Eine Körperschaft ist in den meisten Fällen eine Gemeinde, eine Stadt oder ein Landkreis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Consultation -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Consultation">
+        <rdfs:comment xml:lang="de">Beratung über Drucksachen in einer Sitzung.</rdfs:comment>
+        <rdfs:label xml:lang="de">Beratung</rdfs:label>
+        <rdfs:label xml:lang="en">Consultation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/File -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/File">
+        <rdfs:comment>Ein Objekt vom Typ oparl:File repräsentiert eine Datei, beispielsweise eine PDF-Datei, ein RTF- oder ODF-Dokument, und hält Metadaten zu der Datei sowie URLs zum Zugriff auf die Datei bereit.</rdfs:comment>
+        <rdfs:label xml:lang="de">Datei</rdfs:label>
+        <rdfs:label>File</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Fraction -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Fraction">
+        <rdfs:subClassOf rdf:resource="https://oparl.org/schema/1.0/Organization"/>
+        <rdfs:label xml:lang="de">Fraktion</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/LegislativeTerm -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/LegislativeTerm">
+        <rdfs:comment xml:lang="de">Beschreibung einer Wahlperiode.</rdfs:comment>
+        <rdfs:label xml:lang="de">Legislaturperiode</rdfs:label>
+        <rdfs:label>legislative period</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Location -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Location"/>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Meeting -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Meeting"/>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Membership -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Membership">
+        <rdfs:comment xml:lang="de">Mitgliedschaft von Personen in Gruppierungen. Diese Mitgliedschaften können zeitlich begrenzt sein.</rdfs:comment>
+        <rdfs:label xml:lang="en">Membership</rdfs:label>
+        <rdfs:label xml:lang="de">Mitgliedschaft</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Organization -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Organization">
+        <rdfs:comment xml:lang="de">Bildet Gruppierungen von Personen ab, die in der parlamentarischen Arbeit eine Rolle spielen. Dazu zählen in der Praxis insbesondere Fraktionen und Gremien.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Paper -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Paper">
+        <rdfs:comment>Drucksachen in der parlamentarischen Arbeit, wie zum Beispiel Anfragen, Anträgen und Beschlussvorlagen.</rdfs:comment>
+        <rdfs:label xml:lang="de">Drucksache</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Parliament -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Parliament">
+        <rdfs:subClassOf rdf:resource="https://oparl.org/schema/1.0/Organization"/>
+        <rdfs:label xml:lang="de">Parlament</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Party -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Party">
+        <rdfs:subClassOf rdf:resource="https://oparl.org/schema/1.0/Organization"/>
+        <rdfs:label xml:lang="de">Partei</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/Person -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/Person"/>
+    
+
+
+    <!-- https://oparl.org/schema/1.0/System -->
+
+    <owl:Class rdf:about="https://oparl.org/schema/1.0/System"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.1.20160306-0033) https://github.com/owlcs/owlapi -->
+
